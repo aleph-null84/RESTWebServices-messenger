@@ -13,11 +13,9 @@ import com.yuriy.traning.messenger.service.MessageService;
 @Path("/messages2")
 public class MessageResource2 {
 	
-	MessageService messageService = new MessageService();
-	
 	@GET
-	@Produces(MediaType.APPLICATION_XML)
-	public List<Message> getMessages(){
-		return messageService.getAllMessages();
+	@Produces(MediaType.TEXT_PLAIN)
+	public String getMessages(){
+		return "Hello World!";
 	}
 }
