@@ -12,8 +12,11 @@ public class MessageService {
 	private Map<Long, Message> messages = DatabaseClass.getMessages();
 	
 	public MessageService() {
-		messages.put(1L, new Message(1L, "Hello World!", "Yuriy"));
-		messages.put(2L, new Message(2L, "Some Text!", "Homer"));
+		if (messages.isEmpty()) {
+		    System.out.println("Constructor of MessageService");
+		    messages.put(1L, new Message(1L, "Hello World!", "Yuriy"));
+		    messages.put(2L, new Message(2L, "Some Text!", "Homer"));
+		}
 	}
 	
 	/*

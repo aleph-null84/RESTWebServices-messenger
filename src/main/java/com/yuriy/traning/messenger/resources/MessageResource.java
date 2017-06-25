@@ -3,6 +3,7 @@ package com.yuriy.traning.messenger.resources;
 import java.util.List;
 
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
@@ -42,6 +43,13 @@ public class MessageResource {
 		return messageService.updateMessage(message);
 	}
 	
+	@DELETE
+	@Path("/{messageId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public void deleteMessage(@PathParam("messageId") long id){
+		messageService.removeMessage(id);
+	}
+	
 	@GET
 	@Path("/test")
 	@Produces(MediaType.APPLICATION_XML)
@@ -51,7 +59,7 @@ public class MessageResource {
 	
 	@GET
 	@Path("/{messageId}")
-	@Produces(MediaType.APPLICATION_XML)
+	@Produces(MediaType.APPLICATION_JSON)
 	public Message getMessageById(@PathParam("messageId") long id){
 		return messageService.getMessage(id);
 	}	
