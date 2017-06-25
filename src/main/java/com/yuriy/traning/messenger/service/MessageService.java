@@ -46,7 +46,10 @@ public class MessageService {
 		if (message.getId() <= 0) {
 			return null;
 		}
+		System.out.println("id " + message.getId());
+		System.out.println("message before " + message.getMessage());
 		messages.put(message.getId(), message);
+		System.out.println("message after " + message.getMessage());
 		return message;
 	}
 	
