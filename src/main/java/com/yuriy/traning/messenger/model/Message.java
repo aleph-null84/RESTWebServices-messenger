@@ -1,5 +1,8 @@
 package com.yuriy.traning.messenger.model;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.xml.bind.annotation.XmlRootElement;
@@ -19,7 +22,14 @@ public class Message {
 		this.id = id;
 		this.message = message;
 		this.author = author;
-		this.created = new Date();
+		
+		DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd"); 
+		//this.created = new Date();
+		try {
+			this.created = formatter.parse("2015-03-08");
+		} catch (ParseException e) {
+			this.created = new Date();
+		}
 	}
 	public long getId() {
 		return id;
