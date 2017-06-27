@@ -92,4 +92,11 @@ public class MessageResource {
 	public Message getMessageById(@PathParam("messageId") long id) {
 		return messageService.getMessage(id);
 	}
+	
+	@GET
+	@Path("/{messageId}/comments")
+	@Produces(MediaType.APPLICATION_JSON)
+	public String testMethod() {
+		return "Test";
+	}
 }
