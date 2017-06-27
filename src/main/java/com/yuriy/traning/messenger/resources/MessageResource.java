@@ -93,10 +93,9 @@ public class MessageResource {
 		return messageService.getMessage(id);
 	}
 	
-	@GET
 	@Path("/{messageId}/comments")
 	@Produces(MediaType.APPLICATION_JSON)
-	public String testMethod() {
-		return "Test";
+	public CommentResource getCommentResource() {
+		return new CommentResource();
 	}
 }
