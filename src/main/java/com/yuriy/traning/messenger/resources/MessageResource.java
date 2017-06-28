@@ -13,12 +13,16 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
 
 import com.yuriy.traning.messenger.model.Message;
 import com.yuriy.traning.messenger.resources.beans.MessageFilterBean;
 import com.yuriy.traning.messenger.service.MessageService;
 
 @Path("/messages")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class MessageResource {
 
 	MessageService messageService = new MessageService();
@@ -56,10 +60,13 @@ public class MessageResource {
 	}
 
 	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Message addMessage(Message message) {
-		return messageService.addMessage(message);
+	//public Message addMessage(Message message) {
+	public Response addMessage(Message message) {
+		//return messageService.addMessage(message);
+		Message newMessage = messageService.addMessage(message);
+		return Response.status(Status.CREATED)
+				       .entity(newMessage)
+				       .build();
 	}
 
 	@PUT
