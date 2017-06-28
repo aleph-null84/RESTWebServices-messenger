@@ -7,7 +7,7 @@ import javax.ws.rs.ext.Provider;
 
 import com.yuriy.traning.messenger.model.ErrorMessage;
 
-@Provider
+//@Provider
 public class GenericExceptionMapper implements ExceptionMapper<Throwable> {
 
 	@Override
