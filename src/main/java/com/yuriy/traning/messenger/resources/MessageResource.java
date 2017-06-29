@@ -106,9 +106,15 @@ public class MessageResource {
 
 	@GET
 	@Path("/{messageId}")
-	@Produces(MediaType.APPLICATION_JSON)
-	public Message getMessageById(@PathParam("messageId") long id) {
-		return messageService.getMessage(id);
+	public Message getMessageById(@PathParam("messageId") long id, @Context UriInfo uriInfo) {
+		Message message = messageService.getMessage(id);
+		String uri = uriInfo.getBaseUriBuilder()
+		                    .path(MessageResource.class)
+		                    .path(Long.toString(message.getId()))
+		                    .build()
+		                    .toString();		
+		message.addLink(uri, "self");
+		return message;
 	}
 	
 	@Path("/{messageId}/comments")
